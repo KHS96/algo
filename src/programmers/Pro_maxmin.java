@@ -12,7 +12,7 @@ public class Pro_maxmin {
             max = Math.max(Integer.parseInt(str[i]),max);   //최댓값 비교
             min = Math.min(Integer.parseInt(str[i]),min);   //최솟값 비교
         }
-        answer = min+" " +max;
+        answer = min+ " " +max;
         return answer;
     }
 
