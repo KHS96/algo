@@ -36,7 +36,6 @@ public class boj_10815 {
                 }
             }
         }
-
         for(int x : ans){
             System.out.print(x + " ");
         }
