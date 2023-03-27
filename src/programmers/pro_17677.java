@@ -2,7 +2,7 @@ package programmers;
 
 import java.util.*;
 
-public class pro_42587 {
+public class pro_17677 {
     public static int solution(String str1, String str2) {
         str1 = str1.toUpperCase();
         str2 = str2.toUpperCase();
