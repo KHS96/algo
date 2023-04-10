@@ -1,21 +1,18 @@
-package inflearn;
+package cote;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class inf_1_03 {
+public class inf_1_02 {
     static String solution(String str){
         String answer="";
-        String []temp = str.split(" ");
-        int m=Integer.MIN_VALUE;
-        for(String x : temp){
-            int len = x.length();
-            if(len>m){
-                m=len;
-                answer=x;
+        for(char x : str.toCharArray()){
+            if(Character.isLowerCase(x)){
+                answer += Character.toUpperCase(x);
+            }else{
+                answer += Character.toLowerCase(x);
             }
-
         }
         return answer;
     }

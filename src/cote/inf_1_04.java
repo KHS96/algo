@@ -1,10 +1,9 @@
-package inflearn;
+package cote;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class inf_1_04 {
     static ArrayList<String> solution(int n, String[] str){
