@@ -7,7 +7,7 @@ import java.util.Stack;
 import java.util.StringTokenizer;
 
 public class inf_5_03 {
-    static int solution(int n, int[][] board, int[] moves) {
+    static int solution(int[][] board, int[] moves) {
         int ans = 0;
         Stack<Integer> stk = new Stack<>();
         for (int i = 0; i < moves.length; i++) {
@@ -46,7 +46,7 @@ public class inf_5_03 {
             moves[i] = Integer.parseInt(st.nextToken());
         }
 
-        System.out.println(solution(n, board, moves));
+        System.out.println(solution(board, moves));
 
 
     }
