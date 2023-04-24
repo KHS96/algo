@@ -22,7 +22,7 @@ public class note1 {
             b[i] = Integer.parseInt(st.nextToken());
         }
 
-        // 빨강
+        // 빨강 t
         dp[1][0] = r[1];
         // 초록
         dp[1][1] = g[1];
