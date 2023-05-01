@@ -46,7 +46,6 @@ public class boj_5014 {
                 q.offer(tx);
                 cnt[tx] = cnt[temp] + 1;
             }
-
         }
         System.out.println("use the stairs");
     }
