@@ -1,4 +1,4 @@
-package SWEA.D2;
+package SWEA.d1;
 
 import java.io.IOException;
 
