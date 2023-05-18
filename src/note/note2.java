@@ -23,7 +23,7 @@ public class note2 {
             char c = number.charAt(i);
             if (sb.charAt(sb.length() - 1) == c) {
                 continue;
-            } else if(i==sb.length()-1 && !(sb.charAt(sb.length() - 1) == c)){
+            } else if (i == sb.length() - 1 && !(sb.charAt(sb.length() - 1) == c)) {
                 sb = new StringBuilder(sb.substring(0, sb.length() - 1));
                 answer++;
             }
@@ -40,7 +40,7 @@ public class note2 {
 
             System.out.println(sb);
         }
-        if(sb.length() != number.length())
+        if (sb.length() != number.length())
             answer++;
 
         return answer;
