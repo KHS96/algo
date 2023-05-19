@@ -6,44 +6,34 @@ import java.util.Set;
 import java.util.Stack;
 
 public class note2 {
+    static int[] out = new int[2];
+
     public static void main(String[] args) {
+//        int n = 3;
+        int[] arr = {1, 2, 3};
+        boolean[] visit = new boolean[3];
 
-        String n = "321";
-        System.out.println(solution(n));
-
+        perm(arr, visit, 0, 2);
     }
 
-    public static int solution(String number) {
-        int answer = 1;
-        StringBuilder sb = new StringBuilder();
-        sb.append(number.charAt(0));
-        sb.append(number.charAt(0) + 1 - '0');
-        System.out.println(sb);
-        for (int i = 1; i < number.length(); i++) {
-            char c = number.charAt(i);
-            if (sb.charAt(sb.length() - 1) == c) {
-                continue;
-            } else if (i == sb.length() - 1 && !(sb.charAt(sb.length() - 1) == c)) {
-                sb = new StringBuilder(sb.substring(0, sb.length() - 1));
-                answer++;
+    static void perm(int[] arr, boolean[] visit, int depth, int r) {
+        if (depth == r) {
+            for (int i = 0; i < out.length; i++) {
+                System.out.print(out[i]+" ");
             }
-            sb.append(c);
-            answer++;
-            if (c != '0') {
-                sb.append(c + 1 - '0');
-            }
-//            while (!sb.equals(number.substring(0, sb.length()))) {
-//                sb = new StringBuilder(sb.substring(0, sb.length() - 1));
-//                answer++;
-//            }
-
-
-            System.out.println(sb);
+            System.out.println();
+            return;
         }
-        if (sb.length() != number.length())
-            answer++;
 
-        return answer;
+        for (int i = 0; i < arr.length; i++) {
+            if (visit[i] != true) {
+                visit[i] = true;
+                out[depth] = arr[i];
+                perm(arr, visit, depth + 1, r);
+                visit[i] = false;
+            }
+        }
     }
+
 
 }
