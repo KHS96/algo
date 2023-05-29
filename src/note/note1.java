@@ -9,36 +9,64 @@ public class note1 {
     public static void main(String[] args) throws IOException {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int n = Integer.parseInt(br.readLine());
-        int []r = new int[n+1];
-        int []g = new int[n+1];
-        int []b = new int[n+1];
+        StringTokenizer st = new StringTokenizer(br.readLine());
 
-        int [][] dp = new int[n+1][3];
-        for(int i=1;i<=n;i++){
-            StringTokenizer st = new StringTokenizer(br.readLine());
-            r[i] = Integer.parseInt(st.nextToken());
-            g[i] = Integer.parseInt(st.nextToken());
-            b[i] = Integer.parseInt(st.nextToken());
+        Queue<Integer> q = new LinkedList<>();
+        int center_nodes = Integer.parseInt(st.nextToken());
+        int center_edges = Integer.parseInt(st.nextToken());
+        int[] visit = new int[center_nodes + 1];
+        int[][] arr = new int[center_nodes + 1][center_nodes + 1];
+        for (int i = 0; i < center_edges; i++) {
+            st = new StringTokenizer(br.readLine());
+            int from = Integer.parseInt(st.nextToken());
+            int to = Integer.parseInt(st.nextToken());
+            arr[from][to] = 1;
+            arr[to][from] = 1;
         }
 
-        // 빨강 t
-        dp[1][0] = r[1];
-        // 초록
-        dp[1][1] = g[1];
-        // 파랑
-        dp[1][2] = b[1];
-
-        for(int i=2;i<=n;i++){
-            dp[i][0] = Math.min(dp[i-1][1],dp[i-1][2]) + r[i];
-            dp[i][1] = Math.min(dp[i-1][0],dp[i-1][2]) + g[i];
-            dp[i][2] = Math.min(dp[i-1][0],dp[i-1][1]) + b[i];
+        //status 입력받기
+        center_nodes = Integer.parseInt(br.readLine());
+        int[] status = new int[center_nodes + 1];
+        for (int i = 1; i <= center_nodes; i++) {
+            status[i] = Integer.parseInt(br.readLine());
+            if (status[i] == 3)
+                q.offer(i);
         }
 
-        System.out.println( Math.min(Math.min(dp[n][0],dp[n][1]),dp[n][2]));
+
+        //방문 처리
+        while (!q.isEmpty()) {
+            int temp = q.poll();
+            for (int i = 1; i <= center_nodes; i++) {
+                if (arr[temp][i] == 1 || arr[i][temp] == 1) {
+                    status[i] = 2;
+                    visit[i] = visit[temp] + 1;
+                    arr[temp][i] = 0;
+                    arr[i][temp] = 0;
+                    if (Check(status)) {
+                        break;
+                    }
+                    q.offer(i);
+
+                }
+            }
+        }
+        int ans = 0;
+        for (int i = 1; i <= center_nodes; i++) {
+//            ans = Math.max(ans, visit[i]);
+            System.out.println("i = " + i + " visit[i] = " + visit[i]);
+        }
+        System.out.println(ans);
 
 
+    }
 
+    static boolean Check(int[] status) {
+        for (int i = 1; i < status.length; i++) {
+            if (status[i] == 3)
+                return false;
+        }
+        return true;
     }
 
 }
